@@ -55,6 +55,7 @@ public class Main {
 
     public static void schedulePassengerForFlight() {
         Scanner inputReader = new Scanner(System.in);
+        inputReader.useDelimiter("\n");
         Flight flight = new Flight();
         Passenger passenger = new Passenger();
         SeatingList seatingList = new SeatingList();
@@ -101,7 +102,7 @@ public class Main {
         flight.setDepartureAirport(input);
 
         System.out.print("TMP Enter a flight departure date: ");
-        input = inputReader.nextLine().toLowerCase();
+        input = inputReader.nextLine().toLowerCase();//Just Like The Name at start. Does not work with Ints. Scanners Default Delimiter was spaces, changed to \n(new lines).
         System.out.println("got input: " + input);
         flight.setDepartureDate(input);
 
@@ -111,8 +112,11 @@ public class Main {
         switch (input) {
             case "first":
                 seat.setSeatingClass(SeatingClass.first);
+                break;//Need breaks in switch cases!
             case "business":
                 seat.setSeatingClass(SeatingClass.business);
+                break;
+            default://Always need one default in switches! Defaults do not need breaks.
             case "economy":
                 seat.setSeatingClass(SeatingClass.economy);
         }
